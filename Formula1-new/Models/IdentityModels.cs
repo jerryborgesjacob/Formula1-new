@@ -24,7 +24,8 @@ namespace Formula1_new.Models
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
-
+        public DbSet<Driver> Drivers { get; set; }
+        public DbSet<Team> Teams { get; set; }
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
