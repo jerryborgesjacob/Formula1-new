@@ -4,14 +4,27 @@
 }
 
 <h2>Driver List</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Driver Name</th>
+            <th>Points</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var driver in Model)
+        {
 
-@foreach (var driver in Model)
-{
 
-    <h3><a href="/Driver/Edit/@driver.DriverId">@driver.DriverName</a></h3>
-    <a href="/Driver/DeleteConfirm/@driver.DriverId">Delete Driver</a>
-    <h4>@driver.DriverPoints</h4>
+            <tr>
+                <td><a href="/Driver/Edit/@driver.DriverId">@driver.DriverName</a></td>
+                <td>@driver.DriverPoints</td>
+                <td><a href="/Driver/DeleteConfirm/@driver.DriverId">Delete Driver</a></td>
 
-}
+            </tr>
 
-<a href="/Driver/New">Add Driver</a>
+        }
+    </tbody>
+</table>
+    <a href="/Driver/New" class="mt-4">Add Driver</a>
