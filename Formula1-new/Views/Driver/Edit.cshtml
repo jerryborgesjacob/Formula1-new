@@ -1,0 +1,24 @@
+﻿@model Formula1_new.Models.DriverDTO
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit a Driver</h2>
+<form action="/Driver/Update/@Model.DriverId" method="POST">
+    <div style="display:none;">
+        @* Pass through the Driver Id *@
+        <input type="text" name="DriverId" value="@Model.DriverId" />
+    </div>
+    <div>
+        <label>Driver Name:</label> <input type="text" name="DriverName" value="@Model.DriverName" />
+    </div>
+    <div>
+        <label>Driver Points:</label> <input type="text" name="DriverPoints" value="@Model.DriverPoints" />
+    </div>
+
+
+    <div>
+        <input type="submit" value="Update Driver" />
+
+    </div>
+</form>

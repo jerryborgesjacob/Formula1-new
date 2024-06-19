@@ -1,0 +1,17 @@
+﻿@model IEnumerable<Formula1_new.Models.DriverDTO>
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>Driver List</h2>
+
+@foreach (var driver in Model)
+{
+
+    <h3><a href="/Driver/Edit/@driver.DriverId">@driver.DriverName</a></h3>
+    <a href="/Driver/DeleteConfirm/@driver.DriverId">Delete Driver</a>
+    <h4>@driver.DriverPoints</h4>
+
+}
+
+<a href="/Driver/New">Add Driver</a>

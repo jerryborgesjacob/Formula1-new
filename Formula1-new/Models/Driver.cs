@@ -12,5 +12,14 @@ namespace Formula1_new.Models
         public int DriverId { get; set; }
         public string DriverName { get; set; }
         public int DriverPoints { get; set; }
+
+    }
+
+    public class DriverDTO
+    {
+        public int DriverId { get; set; }
+        public string DriverName { get; set; }
+        public int DriverPoints { get; set; }
+
     }
 }

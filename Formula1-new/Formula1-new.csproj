@@ -199,9 +199,23 @@
     <Compile Include="Migrations\202406141654255_Team-2.Designer.cs">
       <DependentUpon>202406141654255_Team-2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202406182139052_foreignkey.cs" />
+    <Compile Include="Migrations\202406182139052_foreignkey.Designer.cs">
+      <DependentUpon>202406182139052_foreignkey.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202406182156197_driverOG.cs" />
+    <Compile Include="Migrations\202406182156197_driverOG.Designer.cs">
+      <DependentUpon>202406182156197_driverOG.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202406182157165_teamFGdriver.cs" />
+    <Compile Include="Migrations\202406182157165_teamFGdriver.Designer.cs">
+      <DependentUpon>202406182157165_teamFGdriver.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Driver.cs" />
+    <Compile Include="Models\DriverController.cs" />
+    <Compile Include="Models\DriverDataController.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Team.cs" />
@@ -279,6 +293,11 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Driver\List.cshtml" />
+    <Content Include="Views\Driver\New.cshtml" />
+    <Content Include="Views\Driver\Error.cshtml" />
+    <Content Include="Views\Driver\DeleteConfirm.cshtml" />
+    <Content Include="Views\Driver\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -319,6 +338,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202406141654255_Team-2.resx">
       <DependentUpon>202406141654255_Team-2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202406182139052_foreignkey.resx">
+      <DependentUpon>202406182139052_foreignkey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202406182156197_driverOG.resx">
+      <DependentUpon>202406182156197_driverOG.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202406182157165_teamFGdriver.resx">
+      <DependentUpon>202406182157165_teamFGdriver.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
