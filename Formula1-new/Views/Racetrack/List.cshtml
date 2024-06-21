@@ -1,0 +1,34 @@
+﻿@model IEnumerable<Formula1_new.Models.RaceTrackDTO>
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>Race Tracks List</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Track Name</th>
+            <th>Track Length</th>
+            <th>Country</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var racetrack in Model)
+        {
+
+
+            <tr>
+                <td><a href="/Racetrack/Edit/@racetrack.TrackId">@racetrack.TrackName</a></td>
+                <td>@racetrack.TrackLength</td>
+                <td>@racetrack.Country</td>
+                <td><a href="/Racetrack/DeleteConfirm/@racetrack.TrackId">Delete Race Track</a></td>
+
+            </tr>
+
+        }
+    </tbody>
+</table>
+<a href="/Racetrack/New" class="mt-4">Add Race Track</a>
+
+

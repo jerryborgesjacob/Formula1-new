@@ -184,6 +184,8 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\RacetrackController.cs" />
+    <Compile Include="Controllers\RacetrackDataController.cs" />
     <Compile Include="Controllers\TeamController.cs" />
     <Compile Include="Controllers\TeamDataController.cs" />
     <Compile Include="Global.asax.cs">
@@ -220,6 +222,14 @@
     <Compile Include="Migrations\202406210031311_DriverRemoveImage.cs" />
     <Compile Include="Migrations\202406210031311_DriverRemoveImage.Designer.cs">
       <DependentUpon>202406210031311_DriverRemoveImage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202406210720540_Racetrack.cs" />
+    <Compile Include="Migrations\202406210720540_Racetrack.Designer.cs">
+      <DependentUpon>202406210720540_Racetrack.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202406210724434_AddedIdentityModel.cs" />
+    <Compile Include="Migrations\202406210724434_AddedIdentityModel.Designer.cs">
+      <DependentUpon>202406210724434_AddedIdentityModel.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -314,6 +324,11 @@
     <Content Include="Views\Team\DeleteConfirm.cshtml" />
     <Content Include="Views\Team\Error.cshtml" />
     <Content Include="Views\Team\Edit.cshtml" />
+    <Content Include="Views\Racetrack\List.cshtml" />
+    <Content Include="Views\Racetrack\Error.cshtml" />
+    <Content Include="Views\Racetrack\New.cshtml" />
+    <Content Include="Views\Racetrack\Edit.cshtml" />
+    <Content Include="Views\Racetrack\DeleteConfirm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -369,6 +384,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202406210031311_DriverRemoveImage.resx">
       <DependentUpon>202406210031311_DriverRemoveImage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202406210720540_Racetrack.resx">
+      <DependentUpon>202406210720540_Racetrack.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202406210724434_AddedIdentityModel.resx">
+      <DependentUpon>202406210724434_AddedIdentityModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

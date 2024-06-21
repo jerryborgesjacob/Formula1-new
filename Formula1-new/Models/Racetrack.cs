@@ -31,4 +31,3 @@ namespace Formula1_new.Models
         public string Country { get; set; }
     }
 }
-}

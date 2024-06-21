@@ -26,6 +26,7 @@ namespace Formula1_new.Models
         }
         public DbSet<Driver> Drivers { get; set; }
         public DbSet<Team> Teams { get; set; }
+        public DbSet<Racetrack> RaceTracks { get; set; }
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();

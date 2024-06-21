@@ -1,39 +1,38 @@
-﻿using System;
+﻿using Formula1_new.Migrations;
+using Formula1_new.Models;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using System.Net.Http;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
-using System.Net.Http;
-using System.Diagnostics;
-using System.Security.Policy;
-using Formula1_new.Models;
-using Formula1_new.Migrations;
-
 
 namespace Formula1_new.Controllers
 {
-    public class TeamController : Controller
+    public class RacetrackController : Controller
     {
         private static readonly HttpClient client;
         private JavaScriptSerializer jss = new JavaScriptSerializer();
 
-        static TeamController()
+        static RacetrackController()
         {
             client = new HttpClient();
             client.BaseAddress = new Uri("https://localhost:44341/api/");
         }
 
+        // GET: Racetrack
         public ActionResult List()
         {
-            string url = "TeamData/ListTeam";
+            string url = "RacetrackData/ListRacetracks";
             HttpResponseMessage response = client.GetAsync(url).Result;
 
-            IEnumerable<TeamDTO> teams = response.Content.ReadAsAsync<IEnumerable<TeamDTO>>().Result;
-            return View(teams);
+            IEnumerable<RaceTrackDTO> racetracks = response.Content.ReadAsAsync<IEnumerable<RaceTrackDTO>>().Result;
+            return View(racetracks);
         }
 
-        // GET: Team/Details/5
+        // GET: Racetrack/Details/5
         public ActionResult Details(int id)
         {
             return View();
@@ -48,12 +47,12 @@ namespace Formula1_new.Controllers
             return View();
         }
 
-        // POST: Team/Create
+        // POST: Racetrack/Create
         [HttpPost]
-        public ActionResult Create(TeamDTO team) 
+        public ActionResult Create(RaceTrackDTO racetrack)
         {
-            string url = "TeamData/AddTeam";
-            string jsonpayload = jss.Serialize(team);
+            string url = "RacetrackData/AddRacetrack";
+            string jsonpayload = jss.Serialize(racetrack);
             Debug.WriteLine(jsonpayload);
 
             HttpContent content = new StringContent(jsonpayload);
@@ -71,8 +70,9 @@ namespace Formula1_new.Controllers
 
         }
 
-        // POST: Team/Create
-        /*[HttpPost]
+        /*
+         * // POST: Racetrack/Create
+        [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
             try
@@ -87,23 +87,23 @@ namespace Formula1_new.Controllers
             }
         }*/
 
-        // GET: Team/Edit/5
+        // GET: Racetrack/Edit/5
         public ActionResult Edit(int id)
         {
-            //the existing team information
-            string url = "TeamData/GetTeam/" + id;
+            //the existing racetrack information
+            string url = "RacetrackData/GetRacetrack/" + id;
             HttpResponseMessage response = client.GetAsync(url).Result;
-            TeamDTO SelectedTeam = response.Content.ReadAsAsync<TeamDTO>().Result;
+            RaceTrackDTO SelectedRacetrack = response.Content.ReadAsAsync<RaceTrackDTO>().Result;
 
-            return View(SelectedTeam);
+            return View(SelectedRacetrack);
         }
 
-        // POST: Team/Edit/5
+        // POST: Racetrack/Edit/5
         [HttpPost]
-        public ActionResult Update(int id, TeamDTO team)
+        public ActionResult Update(int id, RaceTrackDTO racetrack)
         {
-            string url = "TeamData/UpdateTeam/" + id;
-            string jsonpayload = jss.Serialize(team);
+            string url = "RacetrackData/UpdateRacetrack/" + id;
+            string jsonpayload = jss.Serialize(racetrack);
             HttpContent content = new StringContent(jsonpayload);
             content.Headers.ContentType.MediaType = "application/json";
             HttpResponseMessage response = client.PostAsync(url, content).Result;
@@ -118,21 +118,20 @@ namespace Formula1_new.Controllers
             }
         }
 
-        // GET: Team/DeleteConfirm/5
-
+        // GET: Racetrack/DeleteConfirm/5
         public ActionResult DeleteConfirm(int id)
         {
-            string url = "TeamData/GetTeam/" + id;
+            string url = "RacetrackData/GetRacetrack/" + id;
             HttpResponseMessage response = client.GetAsync(url).Result;
-            TeamDTO selectedTeam = response.Content.ReadAsAsync<TeamDTO>().Result;
-            return View(selectedTeam);
+            RaceTrackDTO selectedRacetrack = response.Content.ReadAsAsync<RaceTrackDTO>().Result;
+            return View(selectedRacetrack);
         }
 
-        // POST: Team/Delete/5
+        // POST: Racetrack/Delete/5
         [HttpPost]
         public ActionResult Delete(int id)
         {
-            string url = "TeamData/DeleteTeam/" + id;
+            string url = "RacetrackData/DeleteRacetrack/" + id;
             HttpContent content = new StringContent("");
             content.Headers.ContentType.MediaType = "application/json";
             HttpResponseMessage response = client.PostAsync(url, content).Result;
