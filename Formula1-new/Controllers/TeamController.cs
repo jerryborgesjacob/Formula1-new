@@ -7,37 +7,37 @@ using System.Web.Script.Serialization;
 using System.Net.Http;
 using System.Diagnostics;
 using System.Security.Policy;
+using Formula1_new.Models;
+using Formula1_new.Migrations;
 
-namespace Formula1_new.Models
+
+namespace Formula1_new.Controllers
 {
-    public class DriverController : Controller
+    public class TeamController : Controller
     {
         private static readonly HttpClient client;
         private JavaScriptSerializer jss = new JavaScriptSerializer();
 
-        static DriverController()
+        static TeamController()
         {
             client = new HttpClient();
             client.BaseAddress = new Uri("https://localhost:44341/api/");
         }
 
-        // GET: Driver
-        [Authorize]
         public ActionResult List()
         {
-            string url = "DriverData/ListDrivers";
+            string url = "TeamData/ListTeam";
             HttpResponseMessage response = client.GetAsync(url).Result;
 
-            IEnumerable<DriverDTO> drivers = response.Content.ReadAsAsync<IEnumerable<DriverDTO>>().Result;
-            return View(drivers);
+            IEnumerable<TeamDTO> teams = response.Content.ReadAsAsync<IEnumerable<TeamDTO>>().Result;
+            return View(teams);
         }
 
-        // GET: Driver/Details/5
+        // GET: Team/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
-
         public ActionResult Error()
         {
             return View();
@@ -48,12 +48,12 @@ namespace Formula1_new.Models
             return View();
         }
 
-        // POST: Driver/Create
+        // POST: Team/Create
         [HttpPost]
-        public ActionResult Create(Driver driver)
+        public ActionResult Create(TeamDTO team) 
         {
-            string url = "DriverData/AddDriver";
-            string jsonpayload = jss.Serialize(driver);
+            string url = "TeamData/AddTeam";
+            string jsonpayload = jss.Serialize(team);
             Debug.WriteLine(jsonpayload);
 
             HttpContent content = new StringContent(jsonpayload);
@@ -68,10 +68,10 @@ namespace Formula1_new.Models
             {
                 return RedirectToAction("Error");
             }
-            
+
         }
 
-        // POST: Driver/Create
+        // POST: Team/Create
         /*[HttpPost]
         public ActionResult Create(FormCollection collection)
         {
@@ -85,26 +85,25 @@ namespace Formula1_new.Models
             {
                 return View();
             }
-        }
-        */
-        // GET: Driver/Edit/5
+        }*/
+
+        // GET: Team/Edit/5
         public ActionResult Edit(int id)
-        { 
-
+        {
             //the existing driver information
-            string url = "DriverData/GetDriver/" + id;
+            string url = "TeamData/GetTeam/" + id;
             HttpResponseMessage response = client.GetAsync(url).Result;
-            DriverDTO SelectedDriver = response.Content.ReadAsAsync<DriverDTO>().Result;
+            TeamDTO SelectedTeam = response.Content.ReadAsAsync<TeamDTO>().Result;
 
-            return View(SelectedDriver);
+            return View(SelectedTeam);
         }
 
-        // POST: Driver/Edit/5
+        // POST: Team/Edit/5
         [HttpPost]
-        public ActionResult Update(int id, DriverDTO driver)
+        public ActionResult Update(int id, TeamDTO team)
         {
-            string url = "DriverData/UpdateDriver/" + id;
-            string jsonpayload = jss.Serialize(driver);
+            string url = "TeamData/UpdateTeam/" + id;
+            string jsonpayload = jss.Serialize(team);
             HttpContent content = new StringContent(jsonpayload);
             content.Headers.ContentType.MediaType = "application/json";
             HttpResponseMessage response = client.PostAsync(url, content).Result;
@@ -119,20 +118,21 @@ namespace Formula1_new.Models
             }
         }
 
-        // GET: Driver/Delete/5
+        // GET: Team/Delete/5
+
         public ActionResult DeleteConfirm(int id)
         {
-            string url = "DriverData/GetDriver/" + id;
+            string url = "TeamData/GetTeam/" + id;
             HttpResponseMessage response = client.GetAsync(url).Result;
-            DriverDTO selectedDriver = response.Content.ReadAsAsync<DriverDTO>().Result;
-            return View(selectedDriver);
+            TeamDTO selectedTeam = response.Content.ReadAsAsync<TeamDTO>().Result;
+            return View(selectedTeam);
         }
 
-        // POST: Driver/Delete/5
+        // POST: Team/Delete/5
         [HttpPost]
         public ActionResult Delete(int id)
         {
-            string url = "DriverData/DeleteDriver/" + id;
+            string url = "TeamData/DeleteTeam/" + id;
             HttpContent content = new StringContent("");
             content.Headers.ContentType.MediaType = "application/json";
             HttpResponseMessage response = client.PostAsync(url, content).Result;

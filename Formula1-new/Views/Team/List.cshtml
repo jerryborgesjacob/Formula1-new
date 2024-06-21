@@ -1,0 +1,33 @@
+﻿@model IEnumerable<Formula1_new.Models.TeamDTO>
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>Teams List</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Team Name</th>
+            <th>Points</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var team in Model.OrderByDescending(team => team.TeamPoints))
+        {
+
+
+            <tr>
+                <td><a href="/Team/Edit/@team.TeamId">@team.TeamName</a></td>
+                <td>@team.TeamPoints</td>
+                <td>@team.EngineSupplier</td>
+                <td><a href="/Team/DeleteConfirm/@team.TeamId">Delete Team</a></td>
+
+            </tr>
+
+        }
+    </tbody>
+</table>
+<a href="/Team/New" class="mt-4">Add Team</a>
+
+

@@ -184,6 +184,8 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\TeamController.cs" />
+    <Compile Include="Controllers\TeamDataController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -211,6 +213,14 @@
     <Compile Include="Migrations\202406182157165_teamFGdriver.Designer.cs">
       <DependentUpon>202406182157165_teamFGdriver.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202406202258502_DriverImage.cs" />
+    <Compile Include="Migrations\202406202258502_DriverImage.Designer.cs">
+      <DependentUpon>202406202258502_DriverImage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202406210031311_DriverRemoveImage.cs" />
+    <Compile Include="Migrations\202406210031311_DriverRemoveImage.Designer.cs">
+      <DependentUpon>202406210031311_DriverRemoveImage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Driver.cs" />
@@ -218,6 +228,7 @@
     <Compile Include="Controllers\DriverDataController.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Racetrack.cs" />
     <Compile Include="Models\Team.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -298,6 +309,11 @@
     <Content Include="Views\Driver\Error.cshtml" />
     <Content Include="Views\Driver\DeleteConfirm.cshtml" />
     <Content Include="Views\Driver\Edit.cshtml" />
+    <Content Include="Views\Team\List.cshtml" />
+    <Content Include="Views\Team\New.cshtml" />
+    <Content Include="Views\Team\DeleteConfirm.cshtml" />
+    <Content Include="Views\Team\Error.cshtml" />
+    <Content Include="Views\Team\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -347,6 +363,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202406182157165_teamFGdriver.resx">
       <DependentUpon>202406182157165_teamFGdriver.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202406202258502_DriverImage.resx">
+      <DependentUpon>202406202258502_DriverImage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202406210031311_DriverRemoveImage.resx">
+      <DependentUpon>202406210031311_DriverRemoveImage.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
