@@ -3,28 +3,39 @@
     ViewBag.Title = "List";
 }
 
-<h2>Driver List</h2>
-<table>
-    <thead>
-        <tr>
-            <th>Driver Name</th>
-            <th>Points</th>
-            <th>Delete</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var driver in Model.OrderByDescending(driver => driver.DriverPoints))
-        {
+<style>
+    body {
+        background-image: url('https://www.kymillman.com/wp-content/uploads/f1/gallery/images/edab0291a.jpg');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+</style>
 
-
+<div class="table-container">
+    <h2>Driver List</h2>
+    <table>
+        <thead>
             <tr>
-                <td><a href="/Driver/Edit/@driver.DriverId">@driver.DriverName</a></td>
-                <td>@driver.DriverPoints</td>
-                <td><a href="/Driver/DeleteConfirm/@driver.DriverId">Delete Driver</a></td>
-
+                <th>Driver Name</th>
+                <th>Points</th>
+                <th>Action</th>
             </tr>
+        </thead>
+        <tbody>
+            @foreach (var driver in Model.OrderByDescending(driver => driver.DriverPoints))
+            {
 
-        }
-    </tbody>
-</table>
-    <a href="/Driver/New" class="mt-4">Add Driver</a>
+
+                <tr>
+                    <td>@driver.DriverName</td>
+                    <td>@driver.DriverPoints</td>
+                    <td><a href="/Driver/DeleteConfirm/@driver.DriverId">Delete </a> |  <a href="/Team/Edit/@driver.DriverId">Edit</a></td>
+
+                </tr>
+
+            }
+        </tbody>
+    </table>
+    <a class="add-button" href="/Driver/New" class="mt-4">Add Driver</a>
+</div>

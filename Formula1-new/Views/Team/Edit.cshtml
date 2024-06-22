@@ -3,28 +3,40 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit a Team</h2>
-<form action="/Team/Update/@Model.TeamId" method="POST">
-    <div style="display:none;">
-        @* Pass through the Team Id *@
-        <input type="text" name="TeamId" value="@Model.TeamId" />
-    </div>
-    <div>
-        <label>Team Name:</label> <input type="text" name="TeamName" value="@Model.TeamName" />
-    </div>
-    <div>
-        <label>Team Points:</label> <input type="text" name="TeamPoints" value="@Model.TeamPoints" />
-    </div>
-    <div>
-        <label>Engine Supplier:</label> <input type="text" name="EngineSupplier" value="@Model.EngineSupplier" />
-    </div>
-    <div>
-        <label>Driver Id:</label> <input type="text" name="DriverId" value="@Model.DriverId" />
-    </div>
+
+<style>
+    body {
+        background-image: url('https://github.com/jerryborgesjacob/HTTP5122/blob/main/f1-austria.png?raw=true');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+</style>
+
+<div class="delete-page">
+    <h2>Edit a Team</h2>
+    <form action="/Team/Update/@Model.TeamId" method="POST">
+        <div style="display:none;">
+            @* Pass through the Team Id *@
+            <input type="text" name="TeamId" value="@Model.TeamId" />
+        </div>
+        <div>
+            <label>Team Name:</label> <input type="text" name="TeamName" value="@Model.TeamName" />
+        </div>
+        <div>
+            <label>Team Points:</label> <input type="text" name="TeamPoints" value="@Model.TeamPoints" />
+        </div>
+        <div>
+            <label>Engine Supplier:</label> <input type="text" name="EngineSupplier" value="@Model.EngineSupplier" />
+        </div>
+        <div>
+            <label>Driver Id:</label> <input type="text" name="DriverId" value="@Model.DriverId" />
+        </div>
 
 
-    <div>
-        <input type="submit" value="Update Team" />
+        <div>
+            <input type="submit" value="Update Team" />
 
-    </div>
-</form>
+        </div>
+    </form>
+</div>

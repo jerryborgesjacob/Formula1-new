@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title | F1 Manager</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
@@ -11,28 +11,44 @@
 <body>
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
         <div class="container">
-            @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+            <img src="https://www.f1manager.com/_nuxt/img/f1m2024-logo-horizontal-micro.46ac467.svg" alt="f1 manager logo" width="250px" height="50px">
+            @Html.ActionLink(".", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+
             <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
                 <ul class="navbar-nav flex-grow-1">
                     <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("List", "List", "Driver", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Drivers", "List", "Driver", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Teams", "List", "Team", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Race Tracks", "List", "Racetrack", new { area = "" }, new { @class = "nav-link" })</li>
                 </ul>
-                 @Html.Partial("_LoginPartial")
+                @Html.Partial("_LoginPartial")
             </div>
         </div>
     </nav>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
+    <!--
+    <div class="sections-container">
+        <div class="driver">
+            <h2>Driver Data</h2>
+            <img src="https://github.com/jerryborgesjacob/HTTP5122/blob/main/f1-drivers.png?raw=true" alt="f1-drivers-image" width="300px" height="200px" />
+        </div>
+        <div class="team">
+            <h2>Team Data</h2>
+            <img src="https://mrwallpaper.com/images/hd/ferrari-f1-sf15-t-at-pit-stop-ufykpl2e3dtr08tq.jpg" alt="f1-teams pitstop" width="300px" height="200px" />
+        </div>
+        <div class="track">
+            <h2>Race Track Data</h2>
+            <img src="" alt="" />
+        </div>
     </div>
+    -->
 
+    @RenderBody()
+
+
+    
+    <footer>
+        <p>&copy; @DateTime.Now.Year - Formula 1, All rights reserved.</p>
+    </footer>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)

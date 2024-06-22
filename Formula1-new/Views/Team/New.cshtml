@@ -3,23 +3,33 @@
     ViewBag.Title = "New";
 }
 
-<h2>Add Team</h2>
-<form action="/Team/Create" method="POST">
-    <div>
-        <label>Team Name:</label> <input type="text" name="TeamName" />
-    </div>
-    <div>
-        <label>Team Points:</label> <input type="number" name="TeamPoints" />
-    </div>
-    <div>
-        <label>Engine Supplier:</label> <input type="text" name="EngineSupplier" />
-    </div>
-    <div>
-        <label>Driver Id:</label> <input type="number" name="DriverId" />
-    </div>
-    <div>
-        <input type="submit" value="Add Team" />
-    </div>
-</form>
+<style>
+    body {
+        background-image: url('https://github.com/jerryborgesjacob/HTTP5122/blob/main/f1-austria.png?raw=true');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+</style>
 
+<div class="delete-page">
+    <h2>Add Team</h2>
+    <form action="/Team/Create" method="POST">
+        <div>
+            <label>Team Name:</label> <input type="text" name="TeamName" />
+        </div>
+        <div>
+            <label>Team Points:</label> <input type="number" name="TeamPoints" />
+        </div>
+        <div>
+            <label>Engine Supplier:</label> <input type="text" name="EngineSupplier" />
+        </div>
+        <div>
+            <label>Driver Id:</label> <input type="number" name="DriverId" />
+        </div>
+        <div>
+            <input type="submit" value="Add Team" />
+        </div>
+    </form>
+</div>
 

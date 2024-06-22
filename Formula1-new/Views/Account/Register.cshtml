@@ -3,8 +3,33 @@
     ViewBag.Title = "Register";
 }
 
+
+<style>
+    body {
+        background-image: url('https://github.com/jerryborgesjacob/HTTP5122/blob/main/f1-austria.png?raw=true');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+
+    main {
+        padding: 2em;
+        color: white;
+    }
+
+    .row {
+        min-width: 60%;
+        box-sizing: none;
+    }
+
+        .row label {
+            margin: 3px;
+        }
+</style>
+
+
 <main aria-labelledby="title">
-    <h2 id="title">@ViewBag.Title.</h2>
+    
 
     @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { role = "form" }))
     {

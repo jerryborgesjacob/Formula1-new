@@ -3,24 +3,37 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit a Race Track</h2>
-<form action="/Racetrack/Update/@Model.TrackId" method="POST">
-    <div style="display:none;">
-        @* Pass through the Track Id *@
-        <input type="text" name="TrackId" value="@Model.TrackId" />
-    </div>
-    <div>
-        <label>Track Name:</label> <input type="text" name="TrackName" value="@Model.TrackName" />
-    </div>
-    <div>
-        <label>Team Length:</label> <input type="number" name="TrackLength" value="@Model.TrackLength" />
-    </div>
-    <div>
-        <label>Country:</label> <input type="text" name="Country" value="@Model.Country" />
-    </div>
 
-    <div>
-        <input type="submit" value="Update Race Track" />
+<style>
+    body {
+        background-image: url('https://github.com/jerryborgesjacob/HTTP5122/blob/main/f1-austria.png?raw=true');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+    }
 
-    </div>
-</form>
+</style>
+
+<div class="delete-page">
+    <h2>Edit a Race Track</h2>
+    <form action="/Racetrack/Update/@Model.TrackId" method="POST">
+        <div style="display:none;">
+            @* Pass through the Track Id *@
+            <input type="text" name="TrackId" value="@Model.TrackId" />
+        </div>
+        <div>
+            <label>Track Name:</label> <input type="text" name="TrackName" value="@Model.TrackName" />
+        </div>
+        <div>
+            <label>Team Length:</label> <input type="number" name="TrackLength" value="@Model.TrackLength" />
+        </div>
+        <div>
+            <label>Country:</label> <input type="text" name="Country" value="@Model.Country" />
+        </div>
+
+        <div>
+            <input type="submit" value="Update Race Track" />
+
+        </div>
+    </form>
+</div>

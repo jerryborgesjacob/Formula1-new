@@ -3,32 +3,42 @@
     ViewBag.Title = "List";
 }
 
-<h2>Race Tracks List</h2>
-<table>
-    <thead>
-        <tr>
-            <th>Track Name</th>
-            <th>Track Length</th>
-            <th>Country</th>
-            <th>Delete</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var racetrack in Model)
-        {
+<style>
+    body {
+        background-image: url('https://github.com/jerryborgesjacob/HTTP5122/blob/main/f1-3.png?raw=true');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+</style>
 
-
+<div class="table-container">
+    <h2>Race Tracks List</h2>
+    <table>
+        <thead>
             <tr>
-                <td><a href="/Racetrack/Edit/@racetrack.TrackId">@racetrack.TrackName</a></td>
-                <td>@racetrack.TrackLength</td>
-                <td>@racetrack.Country</td>
-                <td><a href="/Racetrack/DeleteConfirm/@racetrack.TrackId">Delete Race Track</a></td>
-
+                <th>Track Name</th>
+                <th>Track Length</th>
+                <th>Country</th>
+                <th>Action</th>
             </tr>
+        </thead>
+        <tbody>
+            @foreach (var racetrack in Model)
+            {
 
-        }
-    </tbody>
-</table>
-<a href="/Racetrack/New" class="mt-4">Add Race Track</a>
 
+                <tr>
+                    <td>@racetrack.TrackName</td>
+                    <td>@racetrack.TrackLength</td>
+                    <td>@racetrack.Country</td>
+                    <td><a href="/Racetrack/DeleteConfirm/@racetrack.TrackId">Delete </a> |  <a href="/Racetrack/Edit/@racetrack.TrackId">Edit</a></td>
+
+                </tr>
+
+            }
+        </tbody>
+    </table>
+    <a href="/Racetrack/New" class="add-button mt-4">Add Race Track</a>
+</div>
 
