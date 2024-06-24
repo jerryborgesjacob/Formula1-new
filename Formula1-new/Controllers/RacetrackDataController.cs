@@ -16,6 +16,17 @@ namespace Formula1_new.Controllers
     public class RacetrackDataController : ApiController
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+
+        /// <summary>
+        /// Returns all Racetracks in the table in the database.
+        /// </summary>
+        /// <returns>
+        /// List of Racetracks and their details in the table.
+        /// </returns>
+        /// <example>
+        /// // GET: api/RacetrackData/ListRacetracks => Data of Racetracks in the table
+        /// </example>
+
         [HttpGet]
         [Route("api/RacetrackData/ListRaceTracks")]
         // GET: api/RacetrackData/ListRaceTracks
@@ -35,6 +46,18 @@ namespace Formula1_new.Controllers
             return RaceTrackDTOs;
         }
 
+        /// <summary>
+        /// Returns the Racetrack details with the specified TrackId
+        /// </summary>
+        /// <param name="id">TrackId of the Racetrack</param>
+        /// <returns>
+        /// HEADER: 200 (Status Code for OK)
+        /// </returns>
+        /// <example>
+        /// // GET: api/RacetrackData/5 => Data of Racetrack with TrackId 5
+        /// </example>
+
+
         // GET: api/RacetrackData/5
         [ResponseType(typeof(Racetrack))]
         public IHttpActionResult GetRacetrack(int id)
@@ -48,7 +71,24 @@ namespace Formula1_new.Controllers
             return Ok(racetrack);
         }
 
-        // PUT: api/RacetrackData/5
+        /// <summary>
+        /// Updates the Racetrack details of a particular Racetrack with the POST data input
+        /// </summary>
+        /// <param name="id">The TrackId in the table (primary key)</param>
+        /// <param name="racetrack">JSON Form Data of a Racetrack</param>
+        /// <returns>
+        /// Status Code 
+        /// HEADER: 200 = Success
+        /// or
+        /// HEADER: 400 = Bad Request
+        /// or
+        /// HEADER: 404 = Not Found
+        /// </returns>
+        /// <example>
+        /// POST: api/RacetrackData/UpdateRacetrack/5
+        /// FORM Data: Racetrack JSON Object
+        /// </example>
+        
         [ResponseType(typeof(void))]
         public IHttpActionResult UpdateRacetrack(int id, Racetrack racetrack)
         {
@@ -83,7 +123,21 @@ namespace Formula1_new.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/RacetrackData
+        /// <summary>
+        /// Add New Racetrack details onto the Racetrack table in the Database
+        /// </summary>
+        /// <param name="racetrack">JSON Form Data of the Racetrack</param>
+        /// Status Code 
+        /// HEADER: 200 = Success
+        /// or
+        /// HEADER: 400 = Bad Request
+        /// or
+        /// HEADER: 404 = Not Found
+        /// <example>
+        /// POST: api/RacetrackData/AddRacetrack
+        /// FORM Data: Racetrack JSON Object
+        /// </example>
+
         [ResponseType(typeof(Racetrack))]
         public IHttpActionResult AddRacetrack(Racetrack racetrack)
         {
@@ -98,7 +152,20 @@ namespace Formula1_new.Controllers
             return CreatedAtRoute("DefaultApi", new { id = racetrack.TrackId }, racetrack);
         }
 
-        // DELETE: api/RacetrackData/5
+        /// <summary>
+        /// Deletes Racetrack data from the database with TrackId.
+        /// </summary>
+        /// <param name="id">The primary key of the Racetrack</param>
+        /// <returns>
+        /// HEADER: 200 = OK
+        /// or
+        /// HEADER: 404 = Not Found
+        /// </returns>
+        /// <example>
+        /// POST: api/RacetrackData/DeleteRacetrack/5
+        /// FORM DATA: (empty)
+        /// </example>
+
         [ResponseType(typeof(Racetrack))]
         [Route("api/RacetrackData/DeleteRacetrack/{id}")]
         [HttpPost]

@@ -23,8 +23,12 @@ namespace Formula1_new.Controllers
         }
 
         // GET: Racetrack
+        [Authorize]
         public ActionResult List()
         {
+            //objective: communicate with our Racetrack data API to retrieve a list of Racetracks
+            //curl: https://localhost:44341/api/RacetrackData/ListRacetracks
+
             string url = "RacetrackData/ListRacetracks";
             HttpResponseMessage response = client.GetAsync(url).Result;
 
@@ -48,9 +52,14 @@ namespace Formula1_new.Controllers
         }
 
         // POST: Racetrack/Create
+        [Authorize]
         [HttpPost]
         public ActionResult Create(RaceTrackDTO racetrack)
         {
+
+            //objective: Add a new Racetrack into the Database using the API
+            //curl -H "Content-Type:application/json" -d @Driver.json https://localhost:44324/api/RacetrackData/AddRacetrack
+
             string url = "RacetrackData/AddRacetrack";
             string jsonpayload = jss.Serialize(racetrack);
             Debug.WriteLine(jsonpayload);
@@ -88,6 +97,7 @@ namespace Formula1_new.Controllers
         }*/
 
         // GET: Racetrack/Edit/5
+        [Authorize]
         public ActionResult Edit(int id)
         {
             //the existing racetrack information
@@ -99,6 +109,7 @@ namespace Formula1_new.Controllers
         }
 
         // POST: Racetrack/Edit/5
+        [Authorize]
         [HttpPost]
         public ActionResult Update(int id, RaceTrackDTO racetrack)
         {
@@ -119,6 +130,7 @@ namespace Formula1_new.Controllers
         }
 
         // GET: Racetrack/DeleteConfirm/5
+        [Authorize]
         public ActionResult DeleteConfirm(int id)
         {
             string url = "RacetrackData/GetRacetrack/" + id;
@@ -128,6 +140,7 @@ namespace Formula1_new.Controllers
         }
 
         // POST: Racetrack/Delete/5
+        [Authorize]
         [HttpPost]
         public ActionResult Delete(int id)
         {

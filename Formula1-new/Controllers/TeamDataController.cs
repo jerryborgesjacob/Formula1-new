@@ -15,6 +15,16 @@ namespace Formula1_new.Controllers
     public class TeamDataController : ApiController
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+
+        /// <summary>
+        /// Returns all Teams in the table in the database.
+        /// </summary>
+        /// <returns>
+        /// List of teams and their details in the table.
+        /// </returns>
+        /// <example>
+        /// // GET: api/TeamData/ListTeam => Data of teams in the table
+        /// </example>
         [HttpGet]
         [Route("api/TeamData/ListTeam")]
         // GET: api/TeamData/ListTeam
@@ -31,14 +41,22 @@ namespace Formula1_new.Controllers
                 EngineSupplier = a.EngineSupplier,
                 DriverId = a.Driver.DriverId
             
-            
-            
             }));
 
             return TeamDTOs;
         }
 
-        // GET: api/TeamData/5
+        /// <summary>
+        /// Returns the team details with the specified TeamId
+        /// </summary>
+        /// <param name="id">TeamId of the Team</param>
+        /// <returns>
+        /// HEADER: 200 (Status Code for OK)
+        /// </returns>
+        /// <example>
+        /// // GET: api/TeamData/5 => Data of Team with TeamId 5
+        /// </example>
+
         [ResponseType(typeof(Team))]
         public IHttpActionResult GetTeam(int id)
         {
@@ -51,7 +69,24 @@ namespace Formula1_new.Controllers
             return Ok(team);
         }
 
-        // PUT: api/TeamData/5
+        /// <summary>
+        /// Updates the Team details of a particular team with the POST data input
+        /// </summary>
+        /// <param name="id">The TeamId in the table (primary key)</param>
+        /// <param name="team">JSON Form Data of a Team</param>
+        /// <returns>
+        /// Status Code 
+        /// HEADER: 200 = Success
+        /// or
+        /// HEADER: 400 = Bad Request
+        /// or
+        /// HEADER: 404 = Not Found
+        /// </returns>
+        /// <example>
+        /// POST: api/TeamData/UpdateTeam/5
+        /// FORM Data: Team JSON Object
+        /// </example>
+
         [ResponseType(typeof(void))]
         [HttpPost]
         public IHttpActionResult UpdateTeam(int id, Team team)
@@ -87,7 +122,21 @@ namespace Formula1_new.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/TeamData
+        /// <summary>
+        /// Add New Team details onto the Team table in the Database
+        /// </summary>
+        /// <param name="team">JSON Form Data of the Team</param>
+        /// Status Code 
+        /// HEADER: 200 = Success
+        /// or
+        /// HEADER: 400 = Bad Request
+        /// or
+        /// HEADER: 404 = Not Found
+        /// <example>
+        /// POST: api/TeamData/AddTeam
+        /// FORM Data: Team JSON Object
+        /// </example>
+
         [ResponseType(typeof(Team))]
         [HttpPost]
         public IHttpActionResult AddTeam(Team team)
@@ -103,7 +152,20 @@ namespace Formula1_new.Controllers
             return CreatedAtRoute("DefaultApi", new { id = team.TeamId }, team);
         }
 
-        // DELETE: api/TeamData/5
+        /// <summary>
+        /// Deletes Team data from the database with TeamId.
+        /// </summary>
+        /// <param name="id">The primary key of the Team</param>
+        /// <returns>
+        /// HEADER: 200 = OK
+        /// or
+        /// HEADER: 404 = Not Found
+        /// </returns>
+        /// <example>
+        /// POST: api/TeamData/DeleteTeam/5
+        /// FORM DATA: (empty)
+        /// </example>
+        
         [ResponseType(typeof(Team))]
         [Route("api/TeamData/DeleteTeam/{id}")]
         [HttpPost]

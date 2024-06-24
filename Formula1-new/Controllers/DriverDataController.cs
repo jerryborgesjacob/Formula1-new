@@ -8,18 +8,41 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
+using Formula1_new.Models;
 
-namespace Formula1_new.Models
+namespace Formula1_new.Controllers
+
 {
     public class DriverDataController : ApiController
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+
+        /// <summary>
+        /// Returns all Drivers in the table in the database.
+        /// </summary>
+        /// <returns>
+        /// List of drivers and their details in the table.
+        /// </returns>
+        /// <example>
+        /// // GET: api/DriverData/ListDrivers => Data of drivers in the table
+        /// </example>
         [HttpGet]
-        // GET: api/DriverData/ListDrivers
+        
         public IEnumerable<Driver> ListDrivers()
         {
             return db.Drivers;
         }
+
+        /// <summary>
+        /// Returns the driver details with the specified DriverId
+        /// </summary>
+        /// <param name="id">DriverId of the Driver</param>
+        /// <returns>
+        /// HEADER: 200 (Status Code for OK)
+        /// </returns>
+        /// <example>
+        /// // GET: api/DriverData/5 => Data of driver with DriverId 5
+        /// </example>
 
         // GET: api/DriverData/5
         [ResponseType(typeof(Driver))]
@@ -34,7 +57,24 @@ namespace Formula1_new.Models
             return Ok(driver);
         }
 
-        // POST: api/DriverData/5
+        /// <summary>
+        /// Updates the Driver details of a particular driver with the POST data input
+        /// </summary>
+        /// <param name="id">The DriverId in the table (primary key)</param>
+        /// <param name="driver">JSON Form Data of a Driver</param>
+        /// <returns>
+        /// Status Code 
+        /// HEADER: 200 = Success
+        /// or
+        /// HEADER: 400 = Bad Request
+        /// or
+        /// HEADER: 404 = Not Found
+        /// </returns>
+        /// <example>
+        /// POST: api/DriverData/UpdateDriver/5
+        /// FORM Data: Driver JSON Object
+        /// </example>
+
         [ResponseType(typeof(void))]
         [HttpPost]
         public IHttpActionResult UpdateDriver(int id, Driver driver)
@@ -70,7 +110,21 @@ namespace Formula1_new.Models
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/DriverData
+        /// <summary>
+        /// Add New Driver details onto the Driver table in the Database
+        /// </summary>
+        /// <param name="driver">JSON Form Data of the Driver</param>
+        /// Status Code 
+        /// HEADER: 200 = Success
+        /// or
+        /// HEADER: 400 = Bad Request
+        /// or
+        /// HEADER: 404 = Not Found
+        /// <example>
+        /// POST: api/DriverData/AddDriver
+        /// FORM Data: Driver JSON Object
+        /// </example>
+
         [ResponseType(typeof(Driver))]
         [HttpPost]
         public IHttpActionResult AddDriver(Driver driver)
@@ -86,7 +140,21 @@ namespace Formula1_new.Models
             return CreatedAtRoute("DefaultApi", new { id = driver.DriverId }, driver);
         }
 
-        // POST: api/DriverData/5
+        /// <summary>
+        /// Deletes Driver data from the database with DriverId.
+        /// </summary>
+        /// <param name="id">The primary key of the Driver</param>
+        /// <returns>
+        /// HEADER: 200 = OK
+        /// or
+        /// HEADER: 404 = Not Found
+        /// </returns>
+        /// <example>
+        /// POST: api/DriverData/DeleteDriver/5
+        /// FORM DATA: (empty)
+        /// </example>
+        
+
         [ResponseType(typeof(Driver))]
         [HttpPost]
         public IHttpActionResult DeleteDriver(int id)

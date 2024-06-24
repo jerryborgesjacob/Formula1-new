@@ -21,10 +21,14 @@ namespace Formula1_new.Models
             client.BaseAddress = new Uri("https://localhost:44341/api/");
         }
 
+
         // GET: Driver
         [Authorize]
         public ActionResult List()
         {
+            //objective: communicate with our Driver data API to retrieve a list of Drivers
+            //curl: https://localhost:44341/api/DriverData/ListDrivers
+
             string url = "DriverData/ListDrivers";
             HttpResponseMessage response = client.GetAsync(url).Result;
 
@@ -49,9 +53,13 @@ namespace Formula1_new.Models
         }
 
         // POST: Driver/Create
+        [Authorize]
         [HttpPost]
         public ActionResult Create(Driver driver)
         {
+            //objective: Add a new Driver into the Database using the API
+            //curl -H "Content-Type:application/json" -d @Driver.json https://localhost:44324/api/DriverData/AddDriver
+
             string url = "DriverData/AddDriver";
             string jsonpayload = jss.Serialize(driver);
             Debug.WriteLine(jsonpayload);
@@ -88,6 +96,7 @@ namespace Formula1_new.Models
         }
         */
         // GET: Driver/Edit/5
+        [Authorize]
         public ActionResult Edit(int id)
         { 
 
@@ -100,6 +109,7 @@ namespace Formula1_new.Models
         }
 
         // POST: Driver/Edit/5
+        [Authorize]
         [HttpPost]
         public ActionResult Update(int id, DriverDTO driver)
         {
@@ -120,6 +130,7 @@ namespace Formula1_new.Models
         }
 
         // GET: Driver/Delete/5
+        [Authorize]
         public ActionResult DeleteConfirm(int id)
         {
             string url = "DriverData/GetDriver/" + id;
@@ -129,6 +140,7 @@ namespace Formula1_new.Models
         }
 
         // POST: Driver/Delete/5
+        [Authorize]
         [HttpPost]
         public ActionResult Delete(int id)
         {

@@ -16,16 +16,16 @@
     <h2>Add Team</h2>
     <form action="/Team/Create" method="POST">
         <div>
-            <label>Team Name:</label> <input type="text" name="TeamName" />
+            <label>Team Name:</label> <input type="text" name="TeamName" required />
         </div>
         <div>
-            <label>Team Points:</label> <input type="number" name="TeamPoints" />
+            <label>Team Points:</label> <input type="number" name="TeamPoints" required />
         </div>
         <div>
-            <label>Engine Supplier:</label> <input type="text" name="EngineSupplier" />
+            <label>Engine Supplier:</label> <input type="text" name="EngineSupplier" required/>
         </div>
         <div>
-            <label>Driver Id:</label> <input type="number" name="DriverId" />
+            <label>Driver Id:</label> <input type="number" name="DriverId" required/>
         </div>
         <div>
             <input type="submit" value="Add Team" />

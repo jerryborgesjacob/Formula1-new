@@ -24,8 +24,12 @@ namespace Formula1_new.Controllers
             client.BaseAddress = new Uri("https://localhost:44341/api/");
         }
 
+        [Authorize]
         public ActionResult List()
         {
+            //objective: communicate with our Team data API to retrieve a list of Teams
+            //curl: https://localhost:44341/api/TeamData/ListTeams
+
             string url = "TeamData/ListTeam";
             HttpResponseMessage response = client.GetAsync(url).Result;
 
@@ -34,6 +38,7 @@ namespace Formula1_new.Controllers
         }
 
         // GET: Team/Details/5
+        [Authorize]
         public ActionResult Details(int id)
         {
             return View();
@@ -49,9 +54,13 @@ namespace Formula1_new.Controllers
         }
 
         // POST: Team/Create
+        [Authorize]
         [HttpPost]
         public ActionResult Create(TeamDTO team) 
         {
+            //objective: Add a new Team into the Database using the API
+            //curl -H "Content-Type:application/json" -d @Driver.json https://localhost:44324/api/TeamData/AddTeam
+
             string url = "TeamData/AddTeam";
             string jsonpayload = jss.Serialize(team);
             Debug.WriteLine(jsonpayload);
@@ -88,6 +97,7 @@ namespace Formula1_new.Controllers
         }*/
 
         // GET: Team/Edit/5
+        [Authorize]
         public ActionResult Edit(int id)
         {
             //the existing team information
@@ -99,6 +109,7 @@ namespace Formula1_new.Controllers
         }
 
         // POST: Team/Edit/5
+        [Authorize]
         [HttpPost]
         public ActionResult Update(int id, TeamDTO team)
         {
@@ -119,7 +130,7 @@ namespace Formula1_new.Controllers
         }
 
         // GET: Team/DeleteConfirm/5
-
+        [Authorize]
         public ActionResult DeleteConfirm(int id)
         {
             string url = "TeamData/GetTeam/" + id;
@@ -129,6 +140,7 @@ namespace Formula1_new.Controllers
         }
 
         // POST: Team/Delete/5
+        [Authorize]
         [HttpPost]
         public ActionResult Delete(int id)
         {
